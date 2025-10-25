@@ -9,10 +9,11 @@ import with_counter.Laplace;
 public class Main {
 
     public static void main(String[] args) {
-        File file = new File("C:/output.txt");
+        File file = new File("output.txt");
 
         try (Formatter out = new Formatter(file)) {
-            for (int n = 1; n <= 15; n++) {
+            for (int n = 1; n <= 13; n++) {
+                System.out.print("Processing matrix size: " + n);
                 double detLU;
                 long countLU;
                 long timeLU;
@@ -27,6 +28,7 @@ public class Main {
                 detLU = temp1[0];
                 countLU = (long) temp1[1];
                 timeLU = System.nanoTime() - startTime1;
+                System.out.printf(" - LU done %fms, starting Laplace...", timeLU / 1e6);
 
                 long startTime2 = System.nanoTime();
                 double[] temp2 = Laplace.Det(matrix);
@@ -35,6 +37,7 @@ public class Main {
                 timeLaplace = System.nanoTime() - startTime2;
 
                 out.format("%d %f %d %d %f %d %d%n", n, detLU, countLU, timeLU, detLaplace, countLaplace, timeLaplace);
+                System.out.printf(" - Laplace done %fms%n", timeLaplace / 1e6);
             }
         } catch (Exception e) {
         }
