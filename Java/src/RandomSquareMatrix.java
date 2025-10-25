@@ -3,8 +3,8 @@ import java.security.SecureRandom;
 
 public class RandomSquareMatrix {
 
-    public static double[][] generate(int size) {
-        double[][] matrix = new double[size][size];
+    public static int[][] generate(int size) {
+        int[][] matrix = new int[size][size];
         SecureRandom random = new SecureRandom();
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {

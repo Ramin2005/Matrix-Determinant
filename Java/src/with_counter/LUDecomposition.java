@@ -3,7 +3,7 @@ package with_counter;
 public class LUDecomposition {
 
     //az gpt
-    public static double[] calculateDeterminantWithCounter(double[][] matrix) {
+    public static double[] calculateDeterminantWithCounter(int[][] matrix) {
 
         int Counter = 0;
 
@@ -23,10 +23,22 @@ public class LUDecomposition {
         ++Counter; // declaration
         double[][] LU = new double[n][n];
 
+        ++Counter; // declaration
+        ++Counter; // assignment
         Counter += n + 1; // condition
         Counter += n; // increment
         for (int i = 0; i < n; i++) {
-            System.arraycopy(matrix[i], 0, LU[i], 0, n);
+
+            ++Counter; // declaration
+            ++Counter; // assignment
+            Counter += n + 1; // condition
+            Counter += n; // increment
+            for (int j = 0; j < n; j++) {
+
+                ++Counter;//assignment
+                ++Counter;//get element
+                LU[i][j] = matrix[i][j];
+            }
         }
 
         // Determinant and sign variables
@@ -139,5 +151,5 @@ public class LUDecomposition {
         double[] Out = new double[]{det, Counter};
         return Out;
     }
-    
+
 }

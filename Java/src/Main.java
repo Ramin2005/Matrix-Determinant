@@ -25,7 +25,7 @@ public class Main {
                 long countLaplace;
                 long timeLaplace;
 
-                double[][] matrix = RandomSquareMatrix.generate(n);
+                int[][] matrix = RandomSquareMatrix.generate(n);
 
                 long startTime1 = System.nanoTime();
                 double[] temp1 = LUDecomposition.calculateDeterminantWithCounter(matrix);
@@ -35,7 +35,7 @@ public class Main {
                 System.out.printf(" - LU done %fms, starting Laplace...", timeLU / 1e6);
 
                 long startTime2 = System.nanoTime();
-                double[] temp2 = Laplace.Det(matrix);
+                long[] temp2 = Laplace.Det(matrix);
                 detLaplace = temp2[0];
                 countLaplace = (long) temp2[1];
                 timeLaplace = System.nanoTime() - startTime2;
@@ -48,19 +48,20 @@ public class Main {
     }
 
     public static void test2() {
-        try {
-            for (int n = 1; n <= 12; n++) {
-                String path = "./test2/output_" + n + ".txt";
-                File file = new File(path);
-                Formatter out = new Formatter(file);
 
-                double[][] matrix = RandomSquareMatrix.generate(n);
+        for (int n = 1; n <= 13; n++) {
+            String path = "./test2/output_" + n + ".txt";
+            File file = new File(path);
+
+            try (Formatter out = new Formatter(file)) {
+
+                int[][] matrix = RandomSquareMatrix.generate(n);
 
                 out.format("Matrix size: %d%n", n);
                 out.format("Matrix:%n");
                 for (int i = 0; i < n; i++) {
                     for (int j = 0; j < n; j++) {
-                        out.format("%2.0f ", matrix[i][j]);
+                        out.format("%d ", matrix[i][j]);
                     }
                     out.format("%n");
                 }
@@ -75,18 +76,18 @@ public class Main {
                 long countLaplace;
                 long timeLaplace;
 
-                long startTime1 = System.nanoTime();
+                long startTime1 = (System.nanoTime() / 1000);
                 double[] temp1 = LUDecomposition.calculateDeterminantWithCounter(matrix);
                 detLU = temp1[0];
                 countLU = (long) temp1[1];
-                timeLU = System.nanoTime() - startTime1;
+                timeLU = (System.nanoTime() / 1000) - startTime1;
                 System.out.printf(" - LU done %fms, starting Laplace...", timeLU / 1e6);
 
-                long startTime2 = System.nanoTime();
-                double[] temp2 = Laplace.Det(matrix);
+                long startTime2 = (System.nanoTime() / 1000);
+                long[] temp2 = Laplace.Det(matrix);
                 detLaplace = temp2[0];
                 countLaplace = (long) temp2[1];
-                timeLaplace = System.nanoTime() - startTime2;
+                timeLaplace = (System.nanoTime() / 1000) - startTime2;
 
                 int qubed = n * n * n;
 
@@ -96,10 +97,10 @@ public class Main {
                 out.format("Operation Count: %d%n", countLU);
                 double operationCubedRatio = (double) qubed / countLU;
                 out.format("Operation Count LU / n^3: %f%n", operationCubedRatio);
-                out.format("Time (ns): %d%n%n", timeLU);
+                out.format("Time (ms): %d%n%n", timeLU);
 
                 //fac n
-                int factorial = 1;
+                long factorial = 1;
                 for (int i = 2; i <= n; i++) {
                     factorial *= i;
                 }
@@ -110,7 +111,7 @@ public class Main {
                 out.format("Operation Count: %d%n", countLaplace);
                 double operationFactorialRatio = (double) factorial / countLaplace;
                 out.format("Operation Count Laplace / n!: %f%n", operationFactorialRatio);
-                out.format("Time (ns): %d%n%n", timeLaplace);
+                out.format("Time (ms): %d%n%n", timeLaplace);
 
                 double operationRatio = (double) countLaplace / countLU;
                 out.format("Operation Count Laplace / LU: %f%n", operationRatio);
@@ -121,8 +122,10 @@ public class Main {
                 out.close();
 
                 System.out.printf(" - Laplace done %fms%n", timeLaplace / 1e6);
+
+            } catch (Exception e) {
+                System.err.println("error: " + e.getMessage());
             }
-        } catch (Exception e) {
         }
     }
 }
