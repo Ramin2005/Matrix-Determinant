@@ -3,7 +3,7 @@ package with_counter;
 public class Laplace {
 
     // Determinant with operation counter
-    public static double[] Det(double[][] Matrix) {
+    public static long[] Det(int[][] Matrix) {
 
         // Counter
         int Counter = 0;
@@ -11,13 +11,13 @@ public class Laplace {
         // Get matrix size
         ++Counter; // declaration
         ++Counter; // assignment
-        int n = Matrix.length;
+        long n = Matrix.length;
 
         // Check base cases
         ++Counter; // condition
         if (n == 1) {
             ++Counter; // return
-            double[] Out = new double[]{Matrix[0][0], Counter};
+            long[] Out = new long[]{Matrix[0][0], Counter};
             return Out;
         }
 
@@ -27,15 +27,15 @@ public class Laplace {
             ++Counter; // multiplication
             ++Counter; // subtraction
             ++Counter; // return
-            double det2x2 = (Matrix[0][0] * Matrix[1][1]) - (Matrix[0][1] * Matrix[1][0]);
-            double[] Out = new double[]{det2x2, Counter};
+            long det2x2 = (Matrix[0][0] * Matrix[1][1]) - (Matrix[0][1] * Matrix[1][0]);
+            long[] Out = new long[]{det2x2, Counter};
             return Out;
         }
 
         // Initialize determinant
         ++Counter; // declaration
         ++Counter; // assignment
-        double Det = 0;
+        long Det = 0;
 
         // Main Laplace expansion loop
         Counter += n + 1; // condition
@@ -48,7 +48,7 @@ public class Laplace {
 
             ++Counter; // declaration
             ++Counter; // assignment
-            double[][] DelRowAndColumn = new double[nn][nn];
+            int[][] DelRowAndColumn = new int[nn][nn];
 
             Counter += n; // outer loop condition
             Counter += n; // outer loop increment
@@ -73,7 +73,7 @@ public class Laplace {
 
             // Recursive call
             ++Counter; // function call
-            double[] SubResult = Det(DelRowAndColumn);
+            long[] SubResult = Det(DelRowAndColumn);
 
             Counter += SubResult[1]; // add recursive counter
             ++Counter; // multiplication
@@ -87,7 +87,7 @@ public class Laplace {
         }
 
         ++Counter; // return
-        double[] Out = new double[]{Det, Counter};
+        long[] Out = new long[]{Det, Counter};
         return Out;
     }
 }
