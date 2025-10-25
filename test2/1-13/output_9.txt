@@ -1,0 +1,28 @@
+Matrix size: 9
+Matrix:
+9 9 6 8 8 9 2 2 4 
+4 2 4 2 6 1 5 9 7 
+6 5 8 4 7 4 1 8 7 
+2 9 2 7 6 2 6 3 9 
+6 9 2 5 5 7 2 9 1 
+9 9 4 9 3 5 7 8 3 
+4 6 6 2 4 2 7 8 3 
+8 6 5 9 5 5 7 4 3 
+7 9 6 9 2 2 8 3 6 
+
+Results:
+LU Decomposition:
+Determinant: -160569.000000
+Operation Count: 2102
+Operation Count LU / n^3: 0.346813
+Time (ms): 17
+
+Laplace Expansion:
+Determinant: -160569.000000
+Operation Count: 734613101
+Operation Count Laplace / n!: 0.000494
+Time (ms): 27093
+
+Operation Count Laplace / LU: 349482.921503
+Time Laplace / LU: 1593.705882
+

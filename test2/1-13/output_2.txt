@@ -1,21 +1,21 @@
 Matrix size: 2
 Matrix:
-7 9 
-1 7 
+4 5 
+2 6 
 
 Results:
 LU Decomposition:
-Determinant: 40.000000
+Determinant: 14.000000
 Operation Count: 93
 Operation Count LU / n^3: 0.086022
-Time (ms): 5
+Time (ms): 7
 
 Laplace Expansion:
-Determinant: 40.000000
+Determinant: 14.000000
 Operation Count: 8
 Operation Count Laplace / n!: 0.250000
 Time (ms): 1
 
 Operation Count Laplace / LU: 0.086022
-Time Laplace / LU: 0.200000
+Time Laplace / LU: 0.142857
 
