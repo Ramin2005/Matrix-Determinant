@@ -1,0 +1,20 @@
+Matrix size: 1
+Matrix:
+ 6 
+
+Results:
+LU Decomposition:
+Determinant: 6.000000
+Operation Count: 32
+Operation Count LU / n^3: 0.031250
+Time (ns): 605500
+
+Laplace Expansion:
+Determinant: 6.000000
+Operation Count: 4
+Operation Count Laplace / n!: 0.250000
+Time (ns): 311900
+
+Operation Count Laplace / LU: 0.125000
+Time Laplace / LU: 0.515111
+
