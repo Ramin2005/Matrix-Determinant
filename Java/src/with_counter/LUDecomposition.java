@@ -13,7 +13,7 @@ public class LUDecomposition {
 
         ++Counter; // get element
         ++Counter; // get length
-        ++Counter; // get length
+        ++Counter; // condition
         if (n != matrix[0].length) {
             ++Counter; // throw
             throw new ArithmeticException("Matrix must be square to calculate determinant.");
