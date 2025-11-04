@@ -2,7 +2,6 @@ package with_counter;
 
 public class LUDecomposition {
 
-    //az gpt
     public static double[] calculateDeterminantWithCounter(int[][] matrix) {
 
         int Counter = 0;
