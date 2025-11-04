@@ -2,7 +2,6 @@ package with_counter;
 
 public class LUDecomposition {
 
-    //az gpt
     public static double[] calculateDeterminantWithCounter(int[][] matrix) {
 
         int Counter = 0;
@@ -13,7 +12,7 @@ public class LUDecomposition {
 
         ++Counter; // get element
         ++Counter; // get length
-        ++Counter; // get length
+        ++Counter; // condition
         if (n != matrix[0].length) {
             ++Counter; // throw
             throw new ArithmeticException("Matrix must be square to calculate determinant.");
